@@ -34,6 +34,8 @@ public class ApiTakmicenjeController {
 		List<Takmicenje> taks = takmicenjeService.findAll();
 		return new ResponseEntity<>(takToDto.convert(taks), HttpStatus.OK);
 	}
+	
+	
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	ResponseEntity<TakmicenjeDTO> getTakmicenje(@PathVariable Long id) {

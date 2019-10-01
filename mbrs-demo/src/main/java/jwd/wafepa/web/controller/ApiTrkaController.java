@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import jwd.wafepa.model.Takmicenje;
+import jwd.wafepa.model.Trka;
 import jwd.wafepa.service.TrkaService;
 import jwd.wafepa.support.TrkaDTOToTrka;
 import jwd.wafepa.support.TrkaToTrkaDTO;
-import jwd.wafepa.web.dto.TakmicenjeDTO;
 import jwd.wafepa.web.dto.TrkaDTO;
 
 @RestController
@@ -28,44 +27,41 @@ public class ApiTrkaController {
 	TrkaDTOToTrka dtoTotrka;
 	@Autowired
 	TrkaToTrkaDTO trkaToDto;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	ResponseEntity<List<TrkaDTO>> getTrkas() {
-		List<Takmicenje> taks = takmicenjeService.findAll();
-		return new ResponseEntity<>(takToDto.convert(taks), HttpStatus.OK);
+		List<Trka> trkas = trkaService.findAll();
+		return new ResponseEntity<>(trkaToDto.convert(trkas), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	ResponseEntity<TakmicenjeDTO> getTakmicenje(@PathVariable Long id) {
-		Takmicenje tak = takmicenjeService.findOne(id);
-		if (tak == null) {
+	ResponseEntity<TrkaDTO> getTakmicenje(@PathVariable Long id) {
+		Trka trka = trkaService.findOne(id);
+		if (trka == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<>(takToDto.convert(tak), HttpStatus.OK);
+		return new ResponseEntity<>(trkaToDto.convert(trka), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	ResponseEntity<TakmicenjeDTO> delete(@PathVariable Long id) {
-		Takmicenje toDelete = takmicenjeService.delete(id);
-		if (toDelete == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<>(takToDto.convert(toDelete), HttpStatus.OK);
+	ResponseEntity<TrkaDTO> delete(@PathVariable Long id) {
+		trkaService.delete(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-	
-	@RequestMapping(method=RequestMethod.POST, consumes="application/json")
-	public ResponseEntity<TakmicenjeDTO> add(@RequestBody TakmicenjeDTO newTak){
-		
-		Takmicenje savedTak = takmicenjeService.save(dtoToTak.convert(newTak));
-		return new ResponseEntity<>(takToDto.convert(savedTak), HttpStatus.CREATED);
+
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<TrkaDTO> add(@RequestBody TrkaDTO newTrka) {
+
+		Trka savedTak = trkaService.save(dtoTotrka.convert(newTrka));
+		return new ResponseEntity<>(trkaToDto.convert(savedTak), HttpStatus.CREATED);
 	}
-	
-	@RequestMapping(method=RequestMethod.PUT, value="/{id}", consumes="application/json")
-	public ResponseEntity<TakmicenjeDTO> edit(@RequestBody TakmicenjeDTO tak, @PathVariable Long id){
-		if(!id.equals(tak.getId())){
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = "application/json")
+	public ResponseEntity<TrkaDTO> edit(@RequestBody TrkaDTO trka, @PathVariable Long id) {
+		if (!id.equals(trka.getId())) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		Takmicenje persisted=takmicenjeService.save(dtoToTak.convert(tak));
-		return new ResponseEntity<>(takToDto.convert(persisted), HttpStatus.OK);
+		Trka persisted = trkaService.save(dtoTotrka.convert(trka));
+		return new ResponseEntity<>(trkaToDto.convert(persisted), HttpStatus.OK);
 	}
 }
