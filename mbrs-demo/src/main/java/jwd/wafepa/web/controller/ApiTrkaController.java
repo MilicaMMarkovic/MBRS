@@ -35,7 +35,7 @@ public class ApiTrkaController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	ResponseEntity<TrkaDTO> getTakmicenje(@PathVariable Long id) {
+	ResponseEntity<TrkaDTO> getTrka(@PathVariable Long id) {
 		Trka trka = trkaService.findOne(id);
 		if (trka == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

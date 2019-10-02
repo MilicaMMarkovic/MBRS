@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
 
 @Entity
 @Table(name = "takmicar")
@@ -29,6 +30,7 @@ public class Takmicar {
 	@Column(name = "kontakt")
 	private String kontakt;
 
+	@Null
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Trka trka;
 
