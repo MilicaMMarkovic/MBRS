@@ -109,4 +109,12 @@ public class Takmicenje {
 		this.trke = trke;
 	}
 
+	public Takmicenje(String datum, String naziv, String organizator, String kontakt) {
+		super();
+		this.datum = datum;
+		this.naziv = naziv;
+		this.organizator = organizator;
+		this.kontakt = kontakt;
+	}
+
 }

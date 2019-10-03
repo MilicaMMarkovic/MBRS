@@ -5,23 +5,17 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jwd.wafepa.model.Takmicar;
 import jwd.wafepa.model.Takmicenje;
+import jwd.wafepa.model.Trka;
 import jwd.wafepa.repository.TakmicenjeRepository;
 import jwd.wafepa.repository.TrkaRepository;
+import jwd.wafepa.service.TakmicarService;
 import jwd.wafepa.service.TakmicenjeService;
 import jwd.wafepa.service.TrkaService;
 
 @Component
 public class TestData {
-
-//	@Autowired
-//	private ActivityService activityService;
-//	
-//	@Autowired
-//	private UserService userService;
-//	
-//	@Autowired
-//	private RecordService recordService;
 
 	@Autowired
 	TakmicenjeRepository takRepo;
@@ -31,38 +25,46 @@ public class TestData {
 	TrkaService trkaService;
 	@Autowired
 	TakmicenjeService takmicenjeService;
+	@Autowired
+	TakmicarService takmicarService;
 
 	@PostConstruct
 	public void init() {
 
-		Takmicenje tak1 = new Takmicenje();
-		tak1.setId(1L);
-		tak1.setDatum("t1");
-		tak1.setKontakt("t1");
-		tak1.setNaziv("t1");
-		tak1.setOrganizator("t1");
+		Takmicenje tak1 = new Takmicenje("10/2/2019", "tak1", "tak1", "tak1");
 		takmicenjeService.save(tak1);
-		takRepo.save(tak1);
 
-		Takmicenje tak2 = new Takmicenje();
-		tak2.setId(2L);
-		tak1.setDatum("t2");
-		tak1.setKontakt("t2");
-		tak1.setNaziv("t2");
-		tak1.setOrganizator("t2");
+		Takmicenje tak2 = new Takmicenje("10/4/2019", "tak2", "tak2", "tak2");
 		takmicenjeService.save(tak2);
-		takRepo.save(tak2);
 
+		Trka trka1 = new Trka(tak1, 10.5, "frtalj maraton", 1000);
+		tak1.addTrka(trka1);
+		trkaService.save(trka1);
+		takmicenjeService.save(tak1);
 
-//		Trka trk1 = new Trka();
-//		trk1.setCena(1000);
-//		trk1.setDuzina_km(10);
-//		trk1.setNaziv("trka1");
-//		trk1.setTakmicenje(tak1);
+		Trka trka2 = new Trka(tak1, 21.1, "polumaraton", 2000);
+		tak1.addTrka(trka2);
+		trkaService.save(trka2);
+		takmicenjeService.save(tak1);
 
-//		tak1.getTrke().add(trk1);
-//		trkaService.save(trk1);
-//		takmicenjeService.save(tak1);
-		// takRepo.save(tak1);
+		Trka trka3 = new Trka(tak2, 42.2, "maraton", 4000);
+		tak1.addTrka(trka3);
+		trkaService.save(trka3);
+		takmicenjeService.save(tak2);
+
+		Takmicar t1=new Takmicar("Milica Markovic", "2109994805052", "zenski", "mm@example.com", trka1);
+		trka1.addTakmicar(t1);
+		takmicarService.save(t1);
+		trkaService.save(trka1);
+		
+		Takmicar t2=new Takmicar("Mica Markovic", "2109994805152", "zenski", "mmm@example.com", trka1);
+		trka1.addTakmicar(t2);
+		takmicarService.save(t2);
+		trkaService.save(trka1);
+		
+		Takmicar t3=new Takmicar("Pera Peric", "1234567890123", "muski", "ppp@example.com", trka2);
+		trka2.addTakmicar(t3);
+		takmicarService.save(t3);
+		trkaService.save(trka2);
 	}
 }

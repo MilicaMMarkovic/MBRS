@@ -93,4 +93,12 @@ public class Trka {
 		takmicari.add(takmicar);
 	}
 
+	public Trka(Takmicenje takmicenje, double duzinaKm, String naziv, Integer cena) {
+		super();
+		this.takmicenje = takmicenje;
+		this.duzinaKm = duzinaKm;
+		this.naziv = naziv;
+		this.cena = cena;
+	}
+
 }

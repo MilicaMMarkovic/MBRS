@@ -1,0 +1,32 @@
+<div ng-controller="takmicenjesCtrl">
+	<h1>Takmicenja</h1>
+	<br>
+	<button class="btn btn-primary" ng-click="goToAdd()">Add</button>
+	<br>
+	
+	<div class="row">
+		<div class="col-12 col-sm-8 col-md-6 col-lg-4">
+			<table class="table table-bordered">
+				<thead>
+					<tr class="thead-dark">
+						<th>Naziv</th>
+						<th>Datum</th>
+					    <th>Organizator</th>
+					    <th>Kontakt</th>
+						<th colspan="2">Operacije</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="t in taks">
+						<td>{{t.naziv}}</td>
+						<td>{{t.datum}}</td>
+						<td>{{t.organizator}}</td>
+						<td>{{t.kontakt}}</td>
+						<td><button class="btn btn-warning" ng-click="goToEdit(t.id)">Edit</button></td>
+						<td><button class="btn btn-danger" ng-click="doDelete(t.id)">Delete</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
