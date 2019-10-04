@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import jwd.wafepa.model.Takmicenje;
@@ -22,12 +24,6 @@ public class JpaTakmicenjeService implements TakmicenjeService {
 	public Takmicenje findOne(Long id) {
 		// TODO Auto-generated method stub
 		return takmicenjeRepository.findOne(id);
-	}
-
-	@Override
-	public List<Takmicenje> findAll() {
-		// TODO Auto-generated method stub
-		return takmicenjeRepository.findAll();
 	}
 
 	@Override
@@ -51,6 +47,12 @@ public class JpaTakmicenjeService implements TakmicenjeService {
 	@Override
 	public List<Takmicenje> findByNaziv(String naziv) {
 		return takmicenjeRepository.findByNaziv("%"+ naziv+"%");
+	}
+
+	@Override
+	public Page<Takmicenje> findAll(int pageNum) {
+		// TODO Auto-generated method stub
+		return takmicenjeRepository.findAll(new PageRequest(pageNum, 5));
 	}
 
 	

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import jwd.wafepa.model.Trka;
@@ -25,12 +27,6 @@ public class JpaTrkaService implements TrkaService {
 	}
 
 	@Override
-	public List<Trka> findAll() {
-		// TODO Auto-generated method stub
-		return trkaRepository.findAll();
-	}
-
-	@Override
 	public Trka save(Trka trka) {
 		// TODO Auto-generated method stub
 		return trkaRepository.save(trka);
@@ -46,6 +42,12 @@ public class JpaTrkaService implements TrkaService {
 	public List<Trka> findByDuzinaKm(double duzina_km) {
 		// TODO Auto-generated method stub
 		return trkaRepository.findByDuzinaKm(duzina_km);
+	}
+
+	@Override
+	public Page<Trka> findAll(int pageNum) {
+		// TODO Auto-generated method stub
+		return trkaRepository.findAll(new PageRequest(pageNum, 5));
 	}
 
 }

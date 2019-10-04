@@ -30,7 +30,7 @@ public class Takmicar {
 	private String kontakt;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Trka trka;
+	private Trka trka = new Trka();
 
 	public Long getId() {
 		return id;

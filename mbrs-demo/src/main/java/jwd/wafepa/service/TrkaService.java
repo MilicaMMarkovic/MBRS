@@ -2,13 +2,15 @@ package jwd.wafepa.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import jwd.wafepa.model.Trka;
 
 public interface TrkaService {
 
 	Trka findOne(Long id);
 
-	List<Trka> findAll();
+	Page<Trka> findAll(int pageNum);
 
 	Trka save(Trka trka);
 

@@ -23,6 +23,7 @@ public class TakmicarToTakmicarDTO implements Converter<Takmicar, TakmicarDTO> {
 
 		dto.setId(t.getId());
 		dto.setImeIPrezime(t.getImeIPrezime());
+		dto.setPol(t.getPol());
 		dto.setJmbg(t.getJmbg());
 		dto.setKontakt(t.getKontakt());
 		dto.setNazivTrke(t.getTrka().getNaziv());

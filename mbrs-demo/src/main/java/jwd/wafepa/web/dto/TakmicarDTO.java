@@ -8,6 +8,7 @@ public class TakmicarDTO {
 	private String pol;
 	private String kontakt;
 	private String nazivTrke;
+//	@Null
 	private Long trkaId;
 
 	public Long getId() {

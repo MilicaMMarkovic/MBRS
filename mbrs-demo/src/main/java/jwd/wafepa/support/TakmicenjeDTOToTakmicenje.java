@@ -33,6 +33,7 @@ public class TakmicenjeDTOToTakmicenje implements Converter<TakmicenjeDTO, Takmi
 		} else {
 			t = new Takmicenje();
 		}
+		t.setId(dto.getId());
 		t.setDatum(dto.getDatum());
 		t.setKontakt(dto.getKontakt());
 		t.setNaziv(dto.getNaziv());

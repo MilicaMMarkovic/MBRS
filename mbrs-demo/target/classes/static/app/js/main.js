@@ -2,73 +2,42 @@ var wafepaApp = angular.module("wafepaApp", ['ngRoute']);
 
 wafepaApp.controller("homeCtrl", function($scope){
 	
-	$scope.message = "Hello JWD 31";
+	$scope.message = "University project";
 	
 });
-
-//wafepaApp.controller("activitiesCtrl", function($scope, $http, $location){
-//	
-//	var baseUrl = "/api/activities";
-//	
-//	$scope.activities = [];
-//	
-//	var getActivities = function(){
-//		
-//		var promise = $http.get(baseUrl);
-//		promise.then(
-//			function success(res){
-//				$scope.activities = res.data;
-//			},
-//			function error(res){
-//				alert("Couldn't get activities");
-//			}
-//		);
-//		
-//		//console.log("Poruka");
-//	}
-//	
-//	getActivities();
-//	
-//	$scope.goToEdit = function(id){
-//		$location.path("/activities/edit/" + id);
-//	}
-//	
-//	$scope.goToAdd = function(){
-//		$location.path("/activities/add");
-//	}
-//	
-//	$scope.doDelete = function(id){
-//		var promise = $http.delete(baseUrl + "/" + id);
-//		promise.then(
-//			function success(){
-//				getActivities();
-//			},
-//			function error(){
-//				alert("Couldn't delete activity.");
-//			}
-//		);
-//	}
-//});
 
 wafepaApp.controller("takmicenjesCtrl", function($scope, $http, $location){
 	
 	var baseUrl = "/api/takmicenjes";
 	
-	$scope.taks = [];
+	$scope.takmicenje = {};
+	$scope.takmicenje.naziv = "";
+	$scope.takmicenje.datum = "";
+	$scope.takmicenje.kontakt="";
+	$scope.takmicenje.organizator="";
+	
+	$scope.pageNum = 0;
+	$scope.totalPages = 1
+	
+	$scope.takmicenjes = [];
 	
 	var getTakmicenjes = function(){
+		
+		var config = { params: {}};
+		
+		config.params.pageNum = $scope.pageNum;
 		
 		var promise = $http.get(baseUrl);
 		promise.then(
 			function success(res){
-				$scope.taks = res.data;
+				$scope.takmicenjes = res.data;
+				$scope.totalPages = res.headers("totalPages");
 				console.log(res.data);
 			},
 			function error(res){
 				alert("Couldn't get takmicenjes");
 			}
-		);		
-		//console.log("Poruka");
+		);
 	}
 	
 	getTakmicenjes();
@@ -77,8 +46,26 @@ wafepaApp.controller("takmicenjesCtrl", function($scope, $http, $location){
 		$location.path("/takmicenjes/edit/" + id);
 	}
 	
-	$scope.goToAdd = function(){
-		$location.path("/takmicenjes/add");
+// $scope.goToAdd = function(){
+// $location.path("/takmicenjes/add");
+// }
+	
+	$scope.doAdd = function(){
+		var prom = $http.post(baseUrl, $scope.takmicenje);
+		console.log($scope.takmicenje);
+		prom.then(
+			function success(){
+				getTakmicenjes();
+				$scope.takmicenje = {};
+				$scope.takmicenje.naziv = "";
+				$scope.takmicenje.datum = "";
+				$scope.takmicenje.kontakt = "";
+				$scope.takmicenje.organizator = "";
+			},
+			function error(){
+				alert("Couldn't post takmicenje.");
+			}
+		);
 	}
 	
 	$scope.doDelete = function(id){
@@ -98,7 +85,7 @@ wafepaApp.controller("takmicenjesCtrl", function($scope, $http, $location){
 
 wafepaApp.controller("editTakmicenjeCtrl", function($scope, $routeParams, $http, $location){
 	
-	var url = "/api/takicenjes/" + $routeParams.aid;
+	var url = "/api/takmicenjes/" + $routeParams.id;
 	
 	$scope.takmicenje = {};
 	$scope.takmicenje.naziv = "";
@@ -112,7 +99,7 @@ wafepaApp.controller("editTakmicenjeCtrl", function($scope, $routeParams, $http,
 				$scope.takmicenje = res.data;
 			},
 			function error(){
-				alert("Couldn't get activity.");
+				alert("Couldn't get takmicenje.");
 			}
 		);
 	}
@@ -132,158 +119,31 @@ wafepaApp.controller("editTakmicenjeCtrl", function($scope, $routeParams, $http,
 });
 
 wafepaApp.controller("trkasCtrl", function($scope, $http, $location){
-
-	var baseUrl = "/api/trkas";
-
-	$scope.trkas = [];
-
-	var getTrkas = function(){
-		
-		var promise = $http.get(baseUrl);
-		promise.then(
-			function success(res){
-				$scope.trkas = res.data;
-			},
-			function error(res){
-				alert("Couldn't get takmicars");
-			}
-		);
-		
-		//console.log("Poruka");
-	}
-
-	getTrkas();
-
-	$scope.goToEdit = function(id){
-		$location.path("/trkas/edit/" + id);
-	}
-
-	$scope.goToAdd = function(){
-		$location.path("/trkas/add");
-	}
-
-	$scope.doDelete = function(id){
-		var promise = $http.delete(baseUrl + "/" + id);
-		promise.then(
-			function success(){
-				getTrkas();
-			},
-			function error(){
-				alert("Couldn't delete activity.");
-			}
-		);
-	}
-	});
-
-wafepaApp.controller("editTrkaCtrl", function($scope, $routeParams, $http, $location){
 	
-	var url = "/api/trkas/" + $routeParams.aid;
-	
-	$scope.trka = {};
-	$scope.trka.cena = "";
-	$scope.trka.duzinaKm = "";
-	$scope.trka.naziv = "";
-	$scope.trka.nazivTakmicenja = "";
-	$scope.trka.takmicenjeId = "";
-	
-	var getTrka = function(){
-		$http.get(url).then(
-			function success(res){
-				$scope.trka = res.data;
-			},
-			function error(){
-				alert("Couldn't get takmicenje.");
-			}
-		);
-	}
-	
-	getTrka();
-	
-	$scope.doEdit = function(){
-		$http.put(url, $scope.trka).then(
-			function success(){
-				$location.path("/trkas");
-			},
-			function error(){
-				alert("Something went wrong.");
-			}
-		);
-	}
-});
-
-
-wafepaApp.controller("addTrkaCtrl", function($scope, $http, $location){
-	
-	var url = "/api/trkas";
-	
-	$scope.trka = {};
-	$scope.trka.cena = "";
-	$scope.trka.duzinaKm = "";
-	$scope.trka.naziv = "";
-	$scope.trka.nazivTakmicenja = "";
-	$scope.trka.takmicenjeId = "";
-	
-	$scope.doAdd = function(){
-		$http.post(url, $scope.trka).then(
-			function uspeh(){
-				$location.path("/trkas");
-			},
-			function neuspeh(){
-				alert("Pisi na srpskom.");
-			}
-		);
-	}
-	
-	
-});
-
-
-////////// $location
-wafepaApp.controller("recordsCtrl", function($scope, $http, $location){
-	
-	var recordsUrl = "/api/records";
-	var activitiesUrl = "/api/activities";
-	var usersUrl = "/api/users";
-	
-	$scope.searchParams = {};
-	$scope.searchParams.activity = "";
-	$scope.searchParams.minimalDuration = "";
-	$scope.searchParams.intensity = "";
+	var trkasUrl = "/api/trkas";
+	var takmicenjesUrl = "/api/takmicenjes";
 	
 	$scope.pageNum = 0;
-	$scope.totalPages = 1;
+	$scope.totalPages = 1
 	
-	$scope.record = {};
-	$scope.record.time = "";
-	$scope.record.duration = "";
-	$scope.record.intensity = "";
-	$scope.record.userId = "";
-	$scope.record.activityId = "";
+	$scope.trka = {};
+	$scope.trka.naziv = "";
+	$scope.trka.cena = "";
+	$scope.trka.duzinaKm = "";
+	$scope.trka.nazivTakmicenja = "";
+	$scope.trka.takmicenjeId = "";
 	
+	$scope.trkas = [];
 	
-	$scope.records = [];
-	
-	var getRecords = function(){
+	var getTrkas = function(){
 		
 		var config = { params: {}};
 		
-		if($scope.searchParams.activity != ""){
-			config.params.activityName = $scope.searchParams.activity;
-		}
-		
-		if($scope.searchParams.minimalDuration != ""){
-			config.params.minDuration = $scope.searchParams.minimalDuration;
-		}
-		
-		if($scope.searchParams.intensity != ""){
-			config.params.intensity = $scope.searchParams.intensity;
-		}
-				
 		config.params.pageNum = $scope.pageNum;
 		
-		$http.get(recordsUrl, config).then(
+		$http.get(trkasUrl, config).then(
 			function success(res){
-				$scope.records = res.data;
+				$scope.trkas = res.data;
 				$scope.totalPages = res.headers("totalPages");
 			},
 			function error(){
@@ -292,134 +152,120 @@ wafepaApp.controller("recordsCtrl", function($scope, $http, $location){
 		);
 	}
 	
-	getRecords();
-	
-	
-	$scope.activities = [];	
-	var getActivities = function(){
-		$http.get(activitiesUrl).then(
+	getTrkas();
+		
+	$scope.takmicenjes = [];	
+	var getTakmicenjes = function(){
+		$http.get(takmicenjesUrl).then(
 			function success(res){
-				$scope.activities = res.data;
+				$scope.takmicenjes = res.data;
 			},
 			function error(){
-				alert("Couldn't fetch activities");
+				alert("Couldn't fetch takmicenjes");
 			}
 		);
-	}
-	
-	getActivities();
-	
-	
-	$scope.users = [];
-	var getUsers = function(){
-		$http.get(usersUrl).then(
-			function success(res){
-				$scope.users = res.data;
-			},
-			function error(){
-				alert("Couldn't fetch users.");
-			}
-		);
-	}
-	
-	getUsers();
+	}	
+	getTakmicenjes();
 	
 	$scope.doAdd = function(){
-		var prom = $http.post(recordsUrl, $scope.record);
+		var prom = $http.post(trkasUrl, $scope.trka);
+		console.log($scope.trka);
 		prom.then(
 			function success(){
-				getRecords();
+				getTrkas();
+				$scope.trka = {};
+				$scope.trka.naziv = "";
+				$scope.trka.cena = "";
+				$scope.trka.duzinaKm = "";
+				$scope.trka.nazivTakmicenja = "";
+				$scope.trka.takmicenjeId = "";
 			},
 			function error(){
-				alert("Couldn't post record.");
+				alert("Couldn't post trka.");
 			}
 		);
 	}
 	
-	//////////////
+	// ////////////
 	$scope.goToEdit = function(id){
-		$location.path("/records/edit/" + id);
-	}
-	
-	$scope.doSearch = function(){
-		//console.log($scope.searchParams);
-		$scope.pageNum = 0;
-		getRecords();
+		$location.path("/trkas/edit/" + id);
 	}
 	
 	$scope.changePage = function(direction){
 		$scope.pageNum = $scope.pageNum + direction;
-		getRecords();
+		getTrkas();
 	}
 	
+	$scope.doDelete = function(id){
+		var promise = $http.delete(trkasUrl + "/" + id);
+		promise.then(
+			function success(){
+				getTrkas();
+			},
+			function error(){
+				alert("Couldn't delete takmicenje.");
+			}
+		);
+	}
 });
 
-///////
-wafepaApp.controller("editRecordCtrl", function($scope, $http, $routeParams, $location){
+wafepaApp.controller("editTrkaCtrl", function($scope, $routeParams, $http, $location){
 	
-	var recordUrl = "/api/records/" + $routeParams.id;
-	var activitiesUrl = "/api/activities";
-	var usersUrl = "/api/users";
+	var trkaUrl = "/api/trkas/" + $routeParams.id;
+	var takmicenjesUrl = "/api/takmicenjes";
+
+	$scope.trka = {};
+	$scope.trka.naziv = "";
+	$scope.trka.cena = "";
+	$scope.trka.duzinaKm = "";
+	$scope.trka.takmicenjeId = "";
+	$scope.trka.nazivTakmicenja = "";	
 	
-	$scope.record = {};
-	$scope.record.time = "";
-	$scope.record.duration = "";
-	$scope.record.intensity = "";
-	$scope.record.userId = "";
-	$scope.record.activityId = "";	
-	
-	
-	$scope.activities = [];
-	$scope.users = [];
-	
-	
-	
-	var getActivities = function(){
-		$http.get(activitiesUrl).then(
+	$scope.takmicenjes = [];
+
+	var getTakmicenjes = function(){
+		$http.get(takmicenjesUrl).then(
 			function success(res){
-				$scope.activities = res.data;
-				getUsers();
+				$scope.takmicenjes = res.data;
+				getTrka();
 			},
 			function error(){
-				alert("Couldn't fetch activities");
+				alert("Couldn't fetch takmicenjes");
 			}
 		);
 	}
 	
-	var getUsers = function(){
-		return $http.get(usersUrl).then(
+// var getUsers = function(){
+// return $http.get(usersUrl).then(
+// function success(res){
+// $scope.users = res.data;
+// getRecord();
+// },
+// function error(){
+// alert("Couldn't fetch users.");
+// }
+// );
+// }
+	
+	var getTrka = function(){
+		$http.get(trkaUrl).then(
 			function success(res){
-				$scope.users = res.data;
-				getRecord();
+				$scope.trka = res.data;
 			},
 			function error(){
-				alert("Couldn't fetch users.");
+				alert("Couldn't fetch trka.");
 			}
 		);
 	}
 	
-	var getRecord = function(){
-		$http.get(recordUrl).then(
-			function success(res){
-				$scope.record = res.data;
-			},
-			function error(){
-				alert("Couldn't fetch record.");
-			}
-		);
-	}
-	
-	//getUsers();
-	getActivities();
-	//getRecord();
-	// Pogledati promise chaining kako bi se ovo odradilo na kraci nacin
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#Chaining
-	// https://javascript.info/promise-chaining
+	// getUsers();
+	getTakmicenjes();
+	// getRecord();
 	
 	$scope.doEdit = function(){
-		$http.put(recordUrl, $scope.record).then(
+		$http.put(trkaUrl, $scope.trka).then(
 			function success(){
-				$location.path("/records");
+				$location.path("/trkas");
 			},
 			function error(){
 				alert("Something went wrong.");
@@ -427,6 +273,273 @@ wafepaApp.controller("editRecordCtrl", function($scope, $http, $routeParams, $lo
 		);
 	}
 });
+
+// //////// $location
+// wafepaApp.controller("recordsCtrl", function($scope, $http, $location){
+//	
+// var recordsUrl = "/api/records";
+// var activitiesUrl = "/api/activities";
+// var usersUrl = "/api/users";
+//	
+// $scope.searchParams = {};
+// $scope.searchParams.activity = "";
+// $scope.searchParams.minimalDuration = "";
+// $scope.searchParams.intensity = "";
+//	
+// $scope.pageNum = 0;
+// $scope.totalPages = 1;
+//	
+// $scope.record = {};
+// $scope.record.time = "";
+// $scope.record.duration = "";
+// $scope.record.intensity = "";
+// $scope.record.userId = "";
+// $scope.record.activityId = "";
+//	
+//	
+// $scope.records = [];
+//	
+// var getRecords = function(){
+//		
+// var config = { params: {}};
+//		
+// if($scope.searchParams.activity != ""){
+// config.params.activityName = $scope.searchParams.activity;
+// }
+//		
+// if($scope.searchParams.minimalDuration != ""){
+// config.params.minDuration = $scope.searchParams.minimalDuration;
+// }
+//		
+// if($scope.searchParams.intensity != ""){
+// config.params.intensity = $scope.searchParams.intensity;
+// }
+//				
+// config.params.pageNum = $scope.pageNum;
+//		
+// $http.get(recordsUrl, config).then(
+// function success(res){
+// $scope.records = res.data;
+// $scope.totalPages = res.headers("totalPages");
+// },
+// function error(){
+// alert("Something went wrong!");
+// }
+// );
+// }
+//	
+// getRecords();
+//	
+//	
+// $scope.activities = [];
+// var getActivities = function(){
+// $http.get(activitiesUrl).then(
+// function success(res){
+// $scope.activities = res.data;
+// },
+// function error(){
+// alert("Couldn't fetch activities");
+// }
+// );
+// }
+//	
+// getActivities();
+//	
+//	
+// $scope.users = [];
+// var getUsers = function(){
+// $http.get(usersUrl).then(
+// function success(res){
+// $scope.users = res.data;
+// },
+// function error(){
+// alert("Couldn't fetch users.");
+// }
+// );
+// }
+//	
+// getUsers();
+//	
+// $scope.doAdd = function(){
+// var prom = $http.post(recordsUrl, $scope.record);
+// prom.then(
+// function success(){
+// getRecords();
+// },
+// function error(){
+// alert("Couldn't post record.");
+// }
+// );
+// }
+//	
+// //////////////
+// $scope.goToEdit = function(id){
+// $location.path("/records/edit/" + id);
+// }
+//	
+// $scope.doSearch = function(){
+// //console.log($scope.searchParams);
+// $scope.pageNum = 0;
+// getRecords();
+// }
+//	
+// $scope.changePage = function(direction){
+// $scope.pageNum = $scope.pageNum + direction;
+// getRecords();
+// }
+//	
+// });
+
+
+wafepaApp.controller("takmicarsCtrl", function($scope, $http, $location){
+	
+	var takmicarsUrl = "/api/takmicars";
+	var trkasUrl = "/api/trkas";
+
+	$scope.pageNum = 0;
+	$scope.totalPages = 1;
+	
+	$scope.takmicar = {};
+	$scope.takmicar.imeIPrezime = "";
+	$scope.takmicar.jmbg = "";
+	$scope.takmicar.kontakt = "";
+	$scope.takmicar.pol = "";	
+	$scope.takmicar.trkaId = "";
+	$scope.takmicar.nazivTrke = "";
+	
+	$scope.takmicars = [];
+	
+	var getTakmicars = function(){
+		
+		var config = { params: {}};
+				
+		config.params.pageNum = $scope.pageNum;
+		
+		$http.get(takmicarsUrl, config).then(
+			function success(res){
+				$scope.takmicars = res.data;
+				$scope.totalPages = res.headers("totalPages");
+			},
+			function error(){
+				alert("Something went wrong!");
+			}
+		);
+	}
+	
+	getTakmicars();
+		
+	$scope.trkas = [];	
+	var getTrkas = function(){
+		$http.get(trkasUrl).then(
+			function success(res){
+				$scope.trkas = res.data;
+			},
+			function error(){
+				alert("Couldn't fetch activities");
+			}
+		);
+	}
+	
+	getTrkas();
+	
+	$scope.doAdd = function(){
+		var prom = $http.post(takmicarsUrl, $scope.takmicar);
+		console.log($scope.takmicar);
+		prom.then(
+			function success(){
+				getTakmicars();
+				$scope.takmicar = {};
+				$scope.takmicar.imeIPrezime = "";
+				$scope.takmicar.jmbg = "";
+				$scope.takmicar.kontakt = "";
+				$scope.takmicar.pol = "";	
+				$scope.takmicar.trkaId = "";
+				$scope.takmicar.nazivTrke = "";
+			},
+			function error(){
+				alert("Couldn't post takmicar.");
+			}
+		);
+	}
+	
+	// ////////////
+	$scope.goToEdit = function(id){
+		$location.path("/takmicars/edit/" + id);
+	}
+	
+	$scope.changePage = function(direction){
+		$scope.pageNum = $scope.pageNum + direction;
+		getTakmicars();
+	}
+	
+	$scope.doDelete = function(id){
+		var promise = $http.delete(takmicarsUrl + "/" + id);
+		promise.then(
+			function success(){
+				getTakmicars();
+			},
+			function error(){
+				alert("Couldn't delete takmicar.");
+			}
+		);
+	}
+	
+});
+
+wafepaApp.controller("editTakmicarCtrl", function($scope, $http, $routeParams, $location){
+	
+	var takmicarUrl = "/api/takmicars/" + $routeParams.id;
+	var trkasUrl = "/api/trkas";
+	
+	$scope.takmicar = {};
+	$scope.takmicar.imeIPrezime = "";
+	$scope.takmicar.jmbg = "";
+	$scope.takmicar.kontakt = "";
+	$scope.takmicar.pol = "";	
+	$scope.takmicar.trkaId = "";
+	$scope.takmicar.nazivTrke = "";	
+	
+	$scope.trkas = [];
+	
+	var getTrkas = function(){
+		$http.get(trkasUrl).then(
+			function success(res){
+				$scope.trkas = res.data;
+				getTakmicar();
+			},
+			function error(){
+				alert("Couldn't fetch trkas");
+			}
+		);
+	}
+	
+	var getTakmicar = function(){
+		$http.get(takmicarUrl).then(
+			function success(res){
+				$scope.takmicar = res.data;
+			},
+			function error(){
+				alert("Couldn't fetch takmicar.");
+			}
+		);
+	}
+	
+	// getUsers();
+	getTrkas();
+	// getRecord();
+	
+	$scope.doEdit = function(){
+		$http.put(takmicarUrl, $scope.takmicar).then(
+			function success(){
+				$location.path("/takmicars");
+			},
+			function error(){
+				alert("Something went wrong.");
+			}
+		);
+	}
+});
+
 
 wafepaApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -452,12 +565,6 @@ wafepaApp.config(['$routeProvider', function($routeProvider) {
 		.when('/takmicenjes/add', {
 			templateUrl : '/app/html/add-takmicenje.html'
 		})
-		.when('/trkas/add', {
-			templateUrl : '/app/html/add-trka.html'
-		})
-		.when('/takmicars/add', {
-			templateUrl : '/app/html/add-takmicar.html'
-		})
 		.when('/activities/edit/:aid', {
 			templateUrl : '/app/html/edit-activity.html'
 		})
@@ -467,7 +574,15 @@ wafepaApp.config(['$routeProvider', function($routeProvider) {
 		.when('/records/edit/:id', {
 			templateUrl : '/app/html/edit-record.html'
 		})
-		
+		.when('/takmicars/edit/:id', {
+			templateUrl : '/app/html/edit-takmicar.html'
+		})
+		.when('/takmicenjes/edit/:id', {
+			templateUrl : '/app/html/edit-takmicenje.html'
+		})
+		.when('/trkas/edit/:id', {
+			templateUrl : '/app/html/edit-trka.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

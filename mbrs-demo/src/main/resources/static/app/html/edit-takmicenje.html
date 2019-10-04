@@ -1,0 +1,32 @@
+<div ng-controller="editTakmicenjeCtrl">
+	<form>
+		<div class="form-group">
+			<label>Naziv</label>
+			<input class="form-control" ng-model="takmicenje.naziv" />
+		</div>
+		
+		<div class="form-group">
+			<label>Datum</label>
+			<input class="form-control" ng-model="takmicenje.datum"/>
+		</div>
+		
+		<div class="form-group">
+			<label>Kontakt</label>
+			<input class="form-control" ng-model="takmicenje.kontakt"/>
+		</div>
+		<div class="form-group">
+			<label>Organizator</label>
+			<input class="form-control" ng-model="takmicenje.organizator"/>
+		</div>
+		
+		<!-- <div class="form-group">
+			<label>Trka</label>
+			<select class="form-control" ng-model="takmicar.trkaId">
+				<option ng-repeat="trka in trkas" value="{{trka.id}}" ng-selected="trka.id == takmicar.trkaId">{{trka.naziv}}</option>
+			</select>
+		</div> -->
+		
+		<button class="btn btn-secondary" ng-click="doEdit()">Edit</button>
+	</form>
+
+</div>

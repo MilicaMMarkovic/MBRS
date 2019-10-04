@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,9 @@ public class ApiTakmicarController {
 	@RequestMapping(method = RequestMethod.GET)
 	ResponseEntity<List<TakmicarDTO>> getTakmicars(@RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
 		Page<Takmicar> taks = takmicarService.findAll(pageNum);
-		return new ResponseEntity<>(takmicarToDto.convert(taks.getContent()), HttpStatus.OK);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("totalPages", Integer.toString(taks.getTotalPages()));
+		return new ResponseEntity<>(takmicarToDto.convert(taks.getContent()), headers, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
