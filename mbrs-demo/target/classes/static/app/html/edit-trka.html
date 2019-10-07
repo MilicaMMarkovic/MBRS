@@ -19,9 +19,7 @@
 			<select class="form-control" ng-model="trka.takmicenjeId">
 				<option ng-repeat="t in takmicenjes" value="{{t.id}}" ng-selected="t.id == trka.takmicenjeId">{{t.naziv}}</option>
 			</select>
-		</div>
-		
+		</div>		
 		<button class="btn btn-secondary" ng-click="doEdit()">Edit</button>
 	</form>
-
 </div>

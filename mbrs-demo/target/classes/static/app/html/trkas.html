@@ -1,46 +1,48 @@
 <div ng-controller="trkasCtrl">
-	<h1>Trkas</h1>
-	
+	<h1>Trke</h1>
+
 	<br>
-	
+
 	<div class="row">
-		
+
 		<div class="col-12 col-sm-6 col-md-3">
 			<form>
 				<div class="form-group">
-					<label>Naziv</label>
-					<input class="form-control" ng-model="trka.naziv" />
+					<label>Naziv</label> <input class="form-control"
+						ng-model="trka.naziv" />
 				</div>
-				
+
 				<div class="form-group">
-					<label>Cena</label>
-					<input class="form-control" ng-model="trka.cena"/>
+					<label>Cena</label> <input class="form-control"
+						ng-model="trka.cena" />
 				</div>
-				
+
 				<div class="form-group">
-					<label>Duzina u km</label>
-					<input class="form-control" ng-model="trka.duzinaKm"/>
+					<label>Duzina u km</label> <input class="form-control"
+						ng-model="trka.duzinaKm" />
 				</div>
-				
+
 				<div class="form-group">
-					<label>Takmicenje</label>
-					<select class="form-control" ng-model="trka.takmicenjeId">
+					<label>Takmicenje</label> <select class="form-control"
+						ng-model="trka.takmicenjeId">
 						<option ng-repeat="t in takmicenjes" value="{{t.id}}">{{t.naziv}}</option>
 					</select>
-				</div> 
-				
+				</div>
+
 				<button class="btn btn-secondary" ng-click="doAdd()">Add</button>
 			</form>
-		
+
 		</div>
-		
+
 		<div class="col-12 col-md-9">
-			
+
 			<div class="btn-group float-right">
-				<button ng-disabled="pageNum == 0" ng-click="changePage(-1)" class="btn btn-info">Previous</button>
-				<button ng-disabled="pageNum == totalPages - 1" ng-click="changePage(1)" class="btn btn-info">Next</button>
+				<button ng-disabled="pageNum == 0" ng-click="changePage(-1)"
+					class="btn btn-info">Previous</button>
+				<button ng-disabled="pageNum == totalPages - 1"
+					ng-click="changePage(1)" class="btn btn-info">Next</button>
 			</div>
-			
+
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -48,7 +50,7 @@
 						<th>Cena</th>
 						<th>Duzina u Km</th>
 						<th>Takmicenje</th>
-						<th colspan="2">Operacije</th>
+						<th>Operacije</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,9 +59,10 @@
 						<td>{{t.cena}}</td>
 						<td>{{t.duzinaKm}}</td>
 						<td>{{t.nazivTakmicenja}}</td>
-						<td><button class="btn btn-warning" ng-click="goToEdit(t.id)"><i class="fa fa-pencil" aria-hidden="true"></i>
-</button></td>
-<td><button class="btn btn-danger" ng-click="doDelete(t.id)">Delete</button></td>
+						<td><button class="btn btn-warning" ng-click="goToEdit(t.id)">
+								<i class="fa fa-pencil" aria-hidden="true"></i>
+							</button>
+							<button class="btn btn-danger" ng-click="doDelete(t.id)">Delete</button></td>
 					</tr>
 				</tbody>
 			</table>

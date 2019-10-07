@@ -48,7 +48,7 @@
 						<th>Datum</th>
 						<th>Kontakt</th>
 						<th>Organizator</th>
-						<th colspan="2">Operacije</th>
+						<th>Operacije</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,10 +57,11 @@
 						<td>{{takmicenje.datum}}</td>
 						<td>{{takmicenje.kontakt}}</td>
 						<td>{{takmicenje.organizator}}</td>
-						<td><button class="btn btn-warning" ng-click="goToEdit(takmicenje.id)">
+						<td><button class="btn btn-warning"
+								ng-click="goToEdit(takmicenje.id)">
 								<i class="fa fa-pencil" aria-hidden="true"></i>
-							</button></td>
-						<td><button class="btn btn-danger" ng-click="doDelete(takmicenje.id)">Delete</button></td>
+							</button>
+							<button class="btn btn-danger" ng-click="doDelete(takmicenje.id)">Delete</button></td>
 					</tr>
 				</tbody>
 			</table>
