@@ -32,7 +32,6 @@ wafepaApp.controller("takmicenjesCtrl", function($scope, $http, $location){
 			function success(res){
 				$scope.takmicenjes = res.data;
 				$scope.totalPages = res.headers("totalPages");
-				console.log(res.data);
 			},
 			function error(res){
 				alert("Couldn't get takmicenjes");
@@ -76,8 +75,6 @@ wafepaApp.controller("takmicenjesCtrl", function($scope, $http, $location){
 		);
 	}
 });
-
-
 
 wafepaApp.controller("editTakmicenjeCtrl", function($scope, $routeParams, $http, $location){
 	
@@ -347,8 +344,7 @@ wafepaApp.controller("takmicarsCtrl", function($scope, $http, $location){
 				alert("Couldn't delete takmicar.");
 			}
 		);
-	}
-	
+	}	
 });
 
 wafepaApp.controller("editTakmicarCtrl", function($scope, $http, $routeParams, $location){
@@ -409,9 +405,6 @@ wafepaApp.config(['$routeProvider', function($routeProvider) {
 			templateUrl : '/app/html/home.html',
 			controller: 'homeCtrl'
 		})
-		.when('/activities', {
-			templateUrl : '/app/html/activities.html'
-		})
 		.when('/takmicenjes', {
 			templateUrl : '/app/html/takmicenjes.html'
 		})
@@ -420,21 +413,6 @@ wafepaApp.config(['$routeProvider', function($routeProvider) {
 		})
 		.when('/takmicars', {
 			templateUrl : '/app/html/takmicars.html'
-		})
-		.when('/activities/add', {
-			templateUrl : '/app/html/add-activity.html'
-		})
-		.when('/takmicenjes/add', {
-			templateUrl : '/app/html/add-takmicenje.html'
-		})
-		.when('/activities/edit/:aid', {
-			templateUrl : '/app/html/edit-activity.html'
-		})
-		.when('/records', {
-			templateUrl : '/app/html/records.html'
-		})
-		.when('/records/edit/:id', {
-			templateUrl : '/app/html/edit-record.html'
 		})
 		.when('/takmicars/edit/:id', {
 			templateUrl : '/app/html/edit-takmicar.html'

@@ -1,7 +1,5 @@
 package jwd.wafepa.service.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +40,6 @@ public class JpaTakmicenjeService implements TakmicenjeService {
 		}
 		takmicenjeRepository.delete(takmicenje);
 		return takmicenje;
-	}
-
-	@Override
-	public List<Takmicenje> findByNaziv(String naziv) {
-		return takmicenjeRepository.findByNaziv("%"+ naziv+"%");
 	}
 
 	@Override

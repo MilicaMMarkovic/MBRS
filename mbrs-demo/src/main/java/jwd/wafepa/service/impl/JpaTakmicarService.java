@@ -1,7 +1,5 @@
 package jwd.wafepa.service.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,10 +49,5 @@ public class JpaTakmicarService implements TakmicarService {
 		return takmicar;
 	}
 
-	@Override
-	public List<Takmicar> findByImeIPrezime(String imeIPrezime) {
-		// TODO Auto-generated method stub
-		return takmicarRepository.findByImeIPrezime(imeIPrezime);
-	}
 
 }

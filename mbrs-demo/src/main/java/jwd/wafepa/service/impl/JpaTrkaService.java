@@ -1,7 +1,5 @@
 package jwd.wafepa.service.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +34,6 @@ public class JpaTrkaService implements TrkaService {
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		trkaRepository.delete(id);
-	}
-
-	@Override
-	public List<Trka> findByDuzinaKm(double duzina_km) {
-		// TODO Auto-generated method stub
-		return trkaRepository.findByDuzinaKm(duzina_km);
 	}
 
 	@Override
