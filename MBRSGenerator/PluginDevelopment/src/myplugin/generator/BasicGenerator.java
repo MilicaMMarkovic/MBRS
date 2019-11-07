@@ -19,15 +19,15 @@ import freemarker.template.Template;
 
 public abstract class BasicGenerator {
 
-	private GeneratorOptions generatorOptions; 
-	private String outputPath;	
-	private String templateName;
-	private String templateDir;
-	private String outputFileName;
-	private boolean overwrite = false;
-	private String filePackage;
-	private Configuration cfg;
-	private Template template;	
+	protected GeneratorOptions generatorOptions; 
+	protected String outputPath;	
+	protected String templateName;
+	protected String templateDir;
+	protected String outputFileName;
+	protected boolean overwrite = false;
+	protected String filePackage;
+	protected Configuration cfg;
+	protected Template template;
 	
 	public BasicGenerator(GeneratorOptions generatorOptions) {
 		this.generatorOptions = generatorOptions;
@@ -39,6 +39,7 @@ public abstract class BasicGenerator {
 		this.filePackage = generatorOptions.getFilePackage();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void generate() throws IOException {		
 		if (outputPath == null) {
 			throw new IOException("Output path is not defined!");
@@ -61,10 +62,11 @@ public abstract class BasicGenerator {
 			template = cfg.getTemplate(tName);
 			cfg.setObjectWrapper(new DefaultObjectWrapper());
 			File op = new File(outputPath);
-			if (!op.exists() && !op.mkdirs()) {
+			if (!op.exists())
+				if (!op.mkdirs()) {
 					throw new IOException(
 							"An error occurred during folder creation " + outputPath);
-			}
+				}
 		} catch (IOException e) {
 			throw new IOException("Can't find template " + tName + ".", e);
 		}
@@ -84,19 +86,17 @@ public abstract class BasicGenerator {
 				+ outputFileName.replace("{0}", fileNamePart);
 
 		File of = new File(fullPath);
-		if (!of.getParentFile().exists()) {
+		if (!of.getParentFile().exists())
 			if (!of.getParentFile().mkdirs()) {
 				throw new IOException("An error occurred during output folder creation "
 						+ outputPath);
 			}
-		}
 
 		System.out.println(of.getPath());
 		System.out.println(of.getName());
 
-		if (!isOverwrite() && of.exists()) {
+		if (!isOverwrite() && of.exists())
 			return null;
-		}
 
 		return new OutputStreamWriter(new FileOutputStream(of));
 

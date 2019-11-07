@@ -22,7 +22,7 @@ public class TestPackageGeneration {
 		
 	}
 	
-	private void initModel() {		
+	/*private void initModel() {		
 		
 		List<FMClass> classes = FMModel.getInstance().getClasses();
 		
@@ -72,14 +72,14 @@ public class TestPackageGeneration {
 	
 	public static void main(String[] args) {
 		TestPackageGeneration tg = new TestPackageGeneration();
-		/** @Todo: load project options from xml file */
+		*//** @Todo: load project options from xml file *//*
 		
 		//for test purpose only:
 		GeneratorOptions ejbOptions = new GeneratorOptions("c:/temp", "ejbclass", "./resources/templates/", "{0}.java", true, "ejb"); 				
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("EJBGenerator", ejbOptions);
 				
 		tg.testGenerator();
-	}
+	}*/
 	
 	
 	
