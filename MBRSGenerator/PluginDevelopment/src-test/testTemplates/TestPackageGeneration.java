@@ -1,6 +1,6 @@
 package testTemplates;
 
-import java.util.List;
+/*import java.util.List;
 
 import myplugin.generator.EJBGenerator;
 import myplugin.generator.fmmodel.FMClass;
@@ -8,7 +8,7 @@ import myplugin.generator.fmmodel.FMModel;
 import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.options.ProjectOptions;
-
+*/
 /** TestPackageGeneration: Class for package generation testing
  * @ToDo: Create another test class that loads metadata saved by MagicDraw plugin 
  * ( @see myplugin.GenerateAction#exportToXml() ) and activate code generation. 
