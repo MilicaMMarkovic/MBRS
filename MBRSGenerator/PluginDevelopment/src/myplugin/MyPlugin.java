@@ -108,7 +108,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 		// *************** ANGULAR GENERATOR OPTIONS ***************
 
 		// entity list
-		/*GeneratorOptions angularEntityListPageOptions = new GeneratorOptions(output_path, "entitylist",
+		GeneratorOptions angularEntityListPageOptions = new GeneratorOptions(output_path, "entitylist",
 				"templates//angular//html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
 		angularEntityListPageOptions
 				.setTemplateDir(pluginDir + File.separator + angularEntityListPageOptions.getTemplateDir()); // apsolutna
@@ -164,7 +164,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 				.setTemplateDir(pluginDir + File.separator + angularControllersOptions.getTemplateDir()); // apsolutna
 																											// putanja
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("AngularControllersGenerator",
-				angularControllersOptions);*/
+				angularControllersOptions);
 	}
 
 	private String getOutputPath() {
@@ -172,7 +172,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
-			input = new FileInputStream("resources/projectoptions.properties");
+			input = new FileInputStream("C://Users//Mica//Desktop//MBRS//MBRSGenerator//PluginDevelopment//resources//projectoptions.properties");
 			// load a properties file
 			prop.load(input);
 			// get the property value and print it out

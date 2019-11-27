@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="MagicDraw Category"
+            id="com.nomagic.integration.demo.command.commands.category">
+      </category>
+      <command
+            name="Launch MagicDraw"
+            categoryId="com.nomagic.integration.demo.command.commands.category"
+            id="com.nomagic.integration.demo.command.commands.sampleCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.nomagic.integration.demo.command.commands.sampleCommand"
+            class="com.nomagic.integration.demo.command.handlers.SampleHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.nomagic.integration.demo.command.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+M2+M"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="File"
+               mnemonic="F"
+               id="com.nomagic.integration.demo.command.menus.sampleMenu">
+            <command
+                  commandId="com.nomagic.integration.demo.command.commands.sampleCommand"
+                  mnemonic="S"
+                  id="com.nomagic.integration.demo.command.menus.sampleCommand">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="com.nomagic.integration.demo.command.toolbars.sampleToolbar">
+            <command
+                  commandId="com.nomagic.integration.demo.command.commands.sampleCommand"
+                  icon="icons/sample.gif"
+                  tooltip="Say hello world"
+                  id="com.nomagic.integration.demo.command.toolbars.sampleCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>

@@ -67,7 +67,7 @@ public class SpringGenerator extends BasicGenerator {
 		}
 		List<FMClass> classes = FMModel.getInstance().getClasses();
 
-		LinkedList<FMClass> orderedClasses = orderClasses(classes);
+		LinkedList<FMClass> orderedClasses = takmicenjeClasses(classes);
 
 		Writer out;
 		Map<String, Object> context = new HashMap<String, Object>();
@@ -87,7 +87,7 @@ public class SpringGenerator extends BasicGenerator {
 
 	}
 
-	public LinkedList<FMClass> orderClasses(List<FMClass> classes) {
+	public LinkedList<FMClass> takmicenjeClasses(List<FMClass> classes) {
 		LinkedList<FMClass> ret = new LinkedList<FMClass>();
 		for (FMClass cl : classes) {
 			if (numberOfAssociationLists(cl) == 3) {
