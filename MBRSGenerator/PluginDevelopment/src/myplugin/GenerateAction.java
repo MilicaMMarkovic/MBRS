@@ -1,25 +1,26 @@
 package myplugin;
 
 import java.awt.event.ActionEvent;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-
-import javax.swing.JFileChooser;
+//import java.io.BufferedWriter;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.OutputStreamWriter;
+//import java.io.UnsupportedEncodingException;
+//
+//import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.nomagic.magicdraw.actions.MDAction;
 import com.nomagic.magicdraw.core.Application;
 import com.nomagic.uml2.ext.magicdraw.auxiliaryconstructs.mdmodels.Model;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+/*import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;*/
 
 import myplugin.analyzer.AnalyzeException;
 import myplugin.analyzer.ModelAnalyzer;
+import myplugin.generator.AngularGenerator;
 import myplugin.generator.SpringGenerator;
-import myplugin.generator.fmmodel.FMModel;
+//import myplugin.generator.fmmodel.FMModel;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.options.ProjectOptions;
 
@@ -91,11 +92,10 @@ class GenerateAction extends MDAction{
 			SpringGenerator springApplicationFileGenerator = new SpringGenerator(go9);
 			springApplicationFileGenerator.generateApplicationFile();
 			
-			// ********************************************************************
-			
+			// ********************************************************************			
 			// ****************** ANGULAR GENERATOR ********************
 			
-	/*		GeneratorOptions go10 = ProjectOptions.getProjectOptions().getGeneratorOptions().get("AngularEntityListPageGenerator");			
+			GeneratorOptions go10 = ProjectOptions.getProjectOptions().getGeneratorOptions().get("AngularEntityListPageGenerator");			
 			AngularGenerator angularEntityListPageGenerator = new AngularGenerator(go10);
 			angularEntityListPageGenerator.generate();
 						
@@ -124,7 +124,7 @@ class GenerateAction extends MDAction{
 			angularControllersGenerator.generateJSFile();
 			
 			
-			JOptionPane.showMessageDialog(null, "Code is successfully generated! Generated code is in folder: " + rootDirectory);*/
+			JOptionPane.showMessageDialog(null, "Code is successfully generated! Generated code is in folder: " + rootDirectory);
 //			exportToXml();
 		} catch (AnalyzeException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -133,28 +133,28 @@ class GenerateAction extends MDAction{
 	
 	@SuppressWarnings("unused")
 	private void exportToXml() {
-		if (JOptionPane.showConfirmDialog(null, "Do you want to save FM Model?") == 
-			JOptionPane.OK_OPTION)
-		{	
-			JFileChooser jfc = new JFileChooser();
-			if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-				String fileName = jfc.getSelectedFile().getAbsolutePath();
-			
-				XStream xstream = new XStream(new DomDriver());
-				BufferedWriter out;		
-				try {
-					out = new BufferedWriter(new OutputStreamWriter(
-							new FileOutputStream(fileName), "UTF8"));					
-					xstream.toXML(FMModel.getInstance().getClasses(), out);
-					xstream.toXML(FMModel.getInstance().getEnumerations(), out);
-					
-				} catch (UnsupportedEncodingException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());				
-				} catch (FileNotFoundException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());				
-				}		             
-			}
-		}	
+//		if (JOptionPane.showConfirmDialog(null, "Do you want to save FM Model?") == 
+//			JOptionPane.OK_OPTION)
+//		{	
+//			JFileChooser jfc = new JFileChooser();
+//			if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+//				String fileName = jfc.getSelectedFile().getAbsolutePath();
+//			
+//				XStream xstream = new XStream(new DomDriver());
+//				BufferedWriter out;		
+//				try {
+//					out = new BufferedWriter(new OutputStreamWriter(
+//							new FileOutputStream(fileName), "UTF8"));					
+//					xstream.toXML(FMModel.getInstance().getClasses(), out);
+//					xstream.toXML(FMModel.getInstance().getEnumerations(), out);
+//					
+//				} catch (UnsupportedEncodingException e) {
+//					JOptionPane.showMessageDialog(null, e.getMessage());				
+//				} catch (FileNotFoundException e) {
+//					JOptionPane.showMessageDialog(null, e.getMessage());				
+//				}		             
+//			}
+//		}	
 	}	  
 
 }

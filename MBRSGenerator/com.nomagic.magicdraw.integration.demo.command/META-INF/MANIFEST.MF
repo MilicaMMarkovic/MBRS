@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Command
+Bundle-SymbolicName: com.nomagic.integration.demo.command;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.nomagic.integration.demo.action.Activator
+Bundle-Vendor: NOMAGIC
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.nomagic.magicdraw;bundle-version="17.0.5"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
