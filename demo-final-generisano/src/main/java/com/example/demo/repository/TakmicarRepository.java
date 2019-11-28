@@ -11,5 +11,7 @@ import com.example.demo.model.Takmicar;
 @Repository
 public interface TakmicarRepository extends JpaRepository<Takmicar, Long> {
 
+	List<Takmicar> findByTrkaId(Long id);
+	
 
 }

@@ -69,6 +69,9 @@ demoApp.service('takmicarService', function($http) {
 		return $http.get(this.url, { params: {'name': name, 'page': page}});
 	};
 	
+	this.getAllByTrka = function(id) {
+		return $http.get(this.url + "/filterByTrka/" + id);
+	};
 	
 	this.save = function(takmicar) {
 		if (takmicar.id) {

@@ -50,5 +50,9 @@ public class TakmicarServiceImpl implements TakmicarService {
 		return takmicar;
 	}
 	
+	public List<Takmicar> findByTrkaId(Long id) {
+		return takmicarRepository.findByTrkaId(id);
+	}
+	
 	
 }

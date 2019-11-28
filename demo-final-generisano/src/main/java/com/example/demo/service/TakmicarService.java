@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface TakmicarService extends CrudService<Takmicar> {
 	
+	List<Takmicar> findByTrkaId(Long id);
+	
 }

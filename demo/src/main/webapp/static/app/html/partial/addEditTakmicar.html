@@ -25,6 +25,13 @@
 	    	<input type="text" class="form-control" placeholder="Kontakt..." ng-model="takmicar.kontakt" >
 	    </div>
  	</div>
+	<div class="form-group">
+	    <label class="col-sm-2 control-label">Trka</label>
+	    <div class="col-sm-4">
+	    	<select class="form-control" ng-model="takmicar.trka">
+	    		<option ng-repeat="trka in trkaList" value="{{trka}}"> {{trka.naziv}} </option>
+	    	</select>
+	    </div>
  	</div>
 
 	<div class="form-group">

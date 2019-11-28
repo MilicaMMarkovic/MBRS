@@ -126,7 +126,7 @@ demoApp.controller('addEditTakmicenjeConfirmationController', function($scope, $
 });
 demoApp.controller('TrkaController', function($scope, $location, $routeParams, $uibModal,
 	takmicenjeService,  
-	
+	takmicarService, 
 	trkaService) {
 	
 	$scope.reverse = true;
@@ -211,6 +211,13 @@ demoApp.controller('TrkaController', function($scope, $location, $routeParams, $
 			trkaService.getOne($routeParams.id)
 					.success(function(data) {
 						$scope.trka = data;
+						takmicarService.getAllByTrka($scope.trka.id)
+							.success(function(data) {
+								$scope.takmicarList = data;
+							})
+							.error(function() {
+								
+							});
 						
 						
 					})

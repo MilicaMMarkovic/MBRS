@@ -59,6 +59,16 @@ public class ApiTakmicarController {
 		return new ResponseEntity<>(toDTO.convert(takmicarList), httpHeaders, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/filterByTrka/{id}", method = RequestMethod.GET)
+		ResponseEntity<List<TakmicarDTO>> getTakmicarListByTrka(@PathVariable Long id) {
+
+		List<Takmicar> takmicarList;
+		
+		takmicarList = takmicarService.findByTrkaId(id);
+			
+		return new ResponseEntity<>(toDTO.convert(takmicarList), HttpStatus.OK);
+	}
+	
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	ResponseEntity<TakmicarDTO> getTakmicar(@PathVariable Long id) {
