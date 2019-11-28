@@ -11,7 +11,7 @@ public class TrkaDTO extends AbstractBaseDTO {
     @Size(min=0, max=55)
     private String naziv;
     @Min(1)
-    @Max(10,000)	
+    @Max(10000)	
     private int cena;
     @Min(0)
     @Max(55)	

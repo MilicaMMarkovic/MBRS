@@ -43,10 +43,7 @@
 	<div class="container" ng-view></div>
 	
 	<hr>
-	
-	<footer>
-		<p>Footer</p>
-	</footer>
+
 	
 </body>
 </html>

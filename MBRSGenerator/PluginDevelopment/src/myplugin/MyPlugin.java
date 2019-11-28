@@ -109,7 +109,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		// entity list
 		GeneratorOptions angularEntityListPageOptions = new GeneratorOptions(output_path, "entitylist",
-				"templates//angular//html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
+				"templates\\angular\\html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
 		angularEntityListPageOptions
 				.setTemplateDir(pluginDir + File.separator + angularEntityListPageOptions.getTemplateDir()); // apsolutna
 																												// putanja
@@ -118,7 +118,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		// add edit entity
 		GeneratorOptions angularAddEditEntityPageOptions = new GeneratorOptions(output_path, "addeditentity",
-				"templates//angular//html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
+				"templates\\angular\\html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
 		angularAddEditEntityPageOptions
 				.setTemplateDir(pluginDir + File.separator + angularAddEditEntityPageOptions.getTemplateDir()); // apsolutna
 																												// putanja
@@ -127,7 +127,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		// view list
 		GeneratorOptions angularViewEntityPageOptions = new GeneratorOptions(output_path, "viewentity",
-				"templates//angular//html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
+				"templates\\angular\\html", "{0}.html", true, "src//main//webapp//static//app//html//partial");
 		angularViewEntityPageOptions
 				.setTemplateDir(pluginDir + File.separator + angularViewEntityPageOptions.getTemplateDir()); // apsolutna
 																												// putanja
@@ -136,14 +136,14 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		// index
 		GeneratorOptions angularIndexPageOptions = new GeneratorOptions(output_path, "index",
-				"templates//angular//html", "{0}.html", true, "src//main//webapp//static//app//html");
+				"templates\\angular\\html", "{0}.html", true, "src//main//webapp//static//app//html");
 		angularIndexPageOptions.setTemplateDir(pluginDir + File.separator + angularIndexPageOptions.getTemplateDir()); // apsolutna
 																														// putanja
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("AngularIndexPageGenerator",
 				angularIndexPageOptions);
 
 		// angular routes
-		GeneratorOptions angularRoutesOptions = new GeneratorOptions(output_path, "angularroutes", "templates//angular",
+		GeneratorOptions angularRoutesOptions = new GeneratorOptions(output_path, "angularroutes", "templates\\angular",
 				"{0}.js", true, "src//main//webapp//static//app//js");
 		angularRoutesOptions.setTemplateDir(pluginDir + File.separator + angularRoutesOptions.getTemplateDir()); // apsolutna
 																													// putanja
@@ -151,7 +151,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		// angular services
 		GeneratorOptions angularServicesOptions = new GeneratorOptions(output_path, "angularservices",
-				"templates//angular", "{0}.js", true, "src//main//webapp//static//app//js");
+				"templates\\angular", "{0}.js", true, "src//main//webapp//static//app//js");
 		angularServicesOptions.setTemplateDir(pluginDir + File.separator + angularServicesOptions.getTemplateDir()); // apsolutna
 																														// putanja
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("AngularServicesGenerator",
@@ -159,7 +159,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		// angular controllers
 		GeneratorOptions angularControllersOptions = new GeneratorOptions(output_path, "angularcontrollers",
-				"templates//angular", "{0}.js", true, "src//main//webapp//static//app//js");
+				"templates\\angular", "{0}.js", true, "src//main//webapp//static//app//js");
 		angularControllersOptions
 				.setTemplateDir(pluginDir + File.separator + angularControllersOptions.getTemplateDir()); // apsolutna
 																											// putanja

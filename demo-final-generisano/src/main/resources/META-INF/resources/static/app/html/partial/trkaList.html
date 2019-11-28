@@ -1,0 +1,53 @@
+	
+<h2>Trke<span class="badge">{{totalItems}}</span></h2>
+	
+<div ng-init="page=1; getAll();">
+
+	
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td>Naziv</td>
+			<td>Cena</td>
+			<td>DuzinaKm</td>
+			<td>Takmicenje</td>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="trka in trkaList">
+			<td>{{ trka.naziv }}</td>			
+			
+			<td>{{ trka.cena }}</td>			
+			
+			<td>{{ trka.duzinaKm }}</td>			
+			
+			<td>{{ trka.takmicenje.naziv }}</td>	
+			
+			<td>
+				<a class="btn btn-success btn-sm" href="/#/trkaList/{{ trka.id }}">view</a>
+				<a class="btn btn-warning btn-sm" href="/#/trkaList/edit/{{ trka.id }}">edit</a>
+				<button class="btn btn-danger btn-sm" ng-click="remove(trka.id)">delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+	
+<div>
+
+<div class="row text-center">
+	<span ng-hide="hideSpinner" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+	<span ng-show="showError" class="label label-danger">Ooops, something went wrong! :)</span>
+</div>
+
+<div class="row">
+	<uib-pagination total-items="totalItems" items-per-page="{{maxSize}}" ng-model="page" ng-click="getAll()" max-size="maxSize" class="pagination-sm" boundary-links="true"></uib-pagination>
+</div>
+
+<a href="/#/trkaList/add">Add new Trka</a>
+
+<div class = "row">	
+	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>	
+</div>	
+

@@ -24,11 +24,9 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/#/">Home</a> 
-	<#list classes as class>
-		<#if class.uiClass??>
-				<a class="navbar-brand" href="/#/${class.name?uncap_first}List">${class.uiClass.label}</a>
-		</#if>
-	</#list>
+					<a class="navbar-brand" href="/#/takmicenjeList">Takmicenja</a>
+				<a class="navbar-brand" href="/#/trkaList">Trke</a>
+				<a class="navbar-brand" href="/#/takmicarList">Takmicari</a>
 			</div>
 		</div>
 	</nav>
@@ -43,7 +41,6 @@
 	<div class="container" ng-view></div>
 	
 	<hr>
-	
 
 	
 </body>
