@@ -10,7 +10,7 @@ University project for Rapid Application Methodologies Development
 - Pokrenuti target deploy preko Ant-a u build.xml
 - Pokrenuti MagicDraw, otvoriti model i na toolbar-u ispod Code generation kliknuti Generate.
 
-#Pokretanje generisane aplikacije.
+# Pokretanje generisane aplikacije.
 - U Eclipse ili neki drugi IDE importovati #demo# projekat.
 - Promeniti u application.properties konekcioni string.
 - Pokrenuti projekat kao Java application.

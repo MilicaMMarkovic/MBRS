@@ -23,11 +23,12 @@ public class TakmicarToTakmicarDTO implements Converter<Takmicar, TakmicarDTO> {
 		TakmicarDTO dto = new TakmicarDTO();
 		
 		dto.setId(takmicar.getId());
-		dto.setImeIPrezime(takmicar.getImeIPrezime());
+		dto.setIme(takmicar.getIme());
 		dto.setJmbg(takmicar.getJmbg());
 		dto.setPol(takmicar.getPol());
 		dto.setKontakt(takmicar.getKontakt());
 		dto.setTrka(toTrkaDTO.convert(takmicar.getTrka()));
+		dto.setPrezime(takmicar.getPrezime());
 		return dto;
 	}
 	

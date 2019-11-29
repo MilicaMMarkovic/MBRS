@@ -9,7 +9,7 @@ public class TakmicarDTO extends AbstractBaseDTO {
 
 	@NotNull
     @Size(min=0, max=30)
-    private String imeIPrezime;
+    private String ime;
     @Size(min=0, max=13)
     private String jmbg;
 	@NotNull
@@ -19,15 +19,18 @@ public class TakmicarDTO extends AbstractBaseDTO {
     @Size(min=0, max=30)
     private String kontakt;
     private TrkaDTO trka;	
+	@NotNull
+    @Size(min=0, max=30)
+    private String prezime;
 
 	public TakmicarDTO() {}
 
-	public String getImeIPrezime(){
-    	return imeIPrezime;
+	public String getIme(){
+    	return ime;
   	}
   
-  	public void setImeIPrezime(String imeIPrezime){
-       	this.imeIPrezime = imeIPrezime;	
+  	public void setIme(String ime){
+       	this.ime = ime;	
 	}	
 	public String getJmbg(){
     	return jmbg;
@@ -56,6 +59,13 @@ public class TakmicarDTO extends AbstractBaseDTO {
   
   	public void setTrka(TrkaDTO trka){
        	this.trka = trka;	
+	}	
+	public String getPrezime(){
+    	return prezime;
+  	}
+  
+  	public void setPrezime(String prezime){
+       	this.prezime = prezime;	
 	}	
 
 }

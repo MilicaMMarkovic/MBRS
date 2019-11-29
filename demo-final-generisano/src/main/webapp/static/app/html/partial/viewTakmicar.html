@@ -1,12 +1,12 @@
-<h2>View Takmicar</h2>
+<h2>Prikaz Takmicar</h2>
 
 <div ng-init="getOne()">
 
 <form class="form-horizontal">
 	<div class="form-group">
-	    <label class="col-sm-2 control-label">ImeIPrezime</label>
+	    <label class="col-sm-2 control-label">Ime</label>
 	    <div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="takmicar.imeIPrezime" disabled>
+			<input type="text" class="form-control" ng-model="takmicar.ime" disabled>
 		</div>	
 	</div>
 	<div class="form-group">
@@ -31,6 +31,12 @@
 	    <label class="col-sm-2 control-label">Trka</label>
 	    <div class="col-sm-4">
 			<input type="text" class="form-control" ng-model="takmicar.trka.naziv" disabled>
+		</div>	
+	</div>
+	<div class="form-group">
+	    <label class="col-sm-2 control-label">Prezime</label>
+	    <div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="takmicar.prezime" disabled>
 		</div>	
 	</div>
 </form>

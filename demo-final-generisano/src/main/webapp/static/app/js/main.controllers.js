@@ -58,10 +58,10 @@ demoApp.controller('TakmicenjeController', function($scope, $location, $routePar
 		takmicenjeService.remove(id)
 				.success(function(data) {
 					$scope.getAll();
-					$scope.alerts.push({msg: 'Takmicenje with ID ' + id + ' successufully deleted', type: 'success'});
+					$scope.alerts.push({msg: 'Takmicenje sa ID ' + id + ' obrisan/o', type: 'success'});
 				})
 				.error(function() {
-					$scope.alerts.push({msg: 'Error while deleting Takmicenje with ID ' + id + '!', type: 'danger'});
+					$scope.alerts.push({msg: 'Doslo je do greske prilikom brisanja Takmicenje sa ID ' + id + '!', type: 'danger'});
 				});
 	};
 	
@@ -69,10 +69,10 @@ demoApp.controller('TakmicenjeController', function($scope, $location, $routePar
 	
 	$scope.initAddEditPage = function () {
 		if ($routeParams.id) {
-			$scope.addEditHeading = 'Edit';
+			$scope.addEditHeading = 'Izmeni';
 		}
 		else {
-			$scope.addEditHeading = 'Add';
+			$scope.addEditHeading = 'Dodaj';
 		}
 	}
 	
@@ -183,10 +183,10 @@ demoApp.controller('TrkaController', function($scope, $location, $routeParams, $
 		trkaService.remove(id)
 				.success(function(data) {
 					$scope.getAll();
-					$scope.alerts.push({msg: 'Trka with ID ' + id + ' successufully deleted', type: 'success'});
+					$scope.alerts.push({msg: 'Trka sa ID ' + id + ' obrisan/o', type: 'success'});
 				})
 				.error(function() {
-					$scope.alerts.push({msg: 'Error while deleting Trka with ID ' + id + '!', type: 'danger'});
+					$scope.alerts.push({msg: 'Doslo je do greske prilikom brisanja Trka sa ID ' + id + '!', type: 'danger'});
 				});
 	};
 	
@@ -194,10 +194,10 @@ demoApp.controller('TrkaController', function($scope, $location, $routeParams, $
 	
 	$scope.initAddEditPage = function () {
 		if ($routeParams.id) {
-			$scope.addEditHeading = 'Edit';
+			$scope.addEditHeading = 'Izmeni';
 		}
 		else {
-			$scope.addEditHeading = 'Add';
+			$scope.addEditHeading = 'Dodaj';
 		}
 	}
 	
@@ -312,10 +312,10 @@ demoApp.controller('TakmicarController', function($scope, $location, $routeParam
 		takmicarService.remove(id)
 				.success(function(data) {
 					$scope.getAll();
-					$scope.alerts.push({msg: 'Takmicar with ID ' + id + ' successufully deleted', type: 'success'});
+					$scope.alerts.push({msg: 'Takmicar sa ID ' + id + ' obrisan/o', type: 'success'});
 				})
 				.error(function() {
-					$scope.alerts.push({msg: 'Error while deleting Takmicar with ID ' + id + '!', type: 'danger'});
+					$scope.alerts.push({msg: 'Doslo je do greske prilikom brisanja Takmicar sa ID ' + id + '!', type: 'danger'});
 				});
 	};
 	
@@ -323,10 +323,10 @@ demoApp.controller('TakmicarController', function($scope, $location, $routeParam
 	
 	$scope.initAddEditPage = function () {
 		if ($routeParams.id) {
-			$scope.addEditHeading = 'Edit';
+			$scope.addEditHeading = 'Izmeni';
 		}
 		else {
-			$scope.addEditHeading = 'Add';
+			$scope.addEditHeading = 'Dodaj';
 		}
 	}
 	

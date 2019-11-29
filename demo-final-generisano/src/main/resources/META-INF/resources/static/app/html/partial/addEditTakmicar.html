@@ -2,9 +2,9 @@
 
 <form ng-init="initAddEditPage(); getOne()" class="form-horizontal">
 	<div class="form-group">
-	    <label class="col-sm-2 control-label">ImeIPrezime</label>
+	    <label class="col-sm-2 control-label">Ime</label>
 	    <div class="col-sm-4">
-	    	<input type="text" class="form-control" placeholder="ImeIPrezime..." ng-model="takmicar.imeIPrezime" >
+	    	<input type="text" class="form-control" placeholder="Ime..." ng-model="takmicar.ime" >
 	    </div>
  	</div>
 	<div class="form-group">
@@ -33,25 +33,31 @@
 	    	</select>
 	    </div>
  	</div>
+	<div class="form-group">
+	    <label class="col-sm-2 control-label">Prezime</label>
+	    <div class="col-sm-4">
+	    	<input type="text" class="form-control" placeholder="Prezime..." ng-model="takmicar.prezime" >
+	    </div>
+ 	</div>
 
 	<div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
-	    	<button ng-disabled="   !takmicar.imeIPrezime    && !takmicar.jmbg    && !takmicar.pol    && !takmicar.kontakt    && !takmicar.trka  "
-	    			ng-click="open()" type="submit" class="btn btn-info">Save</button>
+	    	<button ng-disabled="   !takmicar.ime    && !takmicar.jmbg    && !takmicar.pol    && !takmicar.kontakt    && !takmicar.trka    && !takmicar.prezime  "
+	    			ng-click="open()" type="submit" class="btn btn-info">Sacuvaj</button>
 	    </div>
   	</div>
 </form>
 
 <script type="text/ng-template" id="myModalContent.html">
 	<div class="modal-header">
-	   	<h3 class="modal-title">Confirmation</h3>
+	   	<h3 class="modal-title">Potvrda</h3>
 	</div>
 	<div class="modal-body">
-	   	<p>Are you sure you want to add/edit activity?</p>
+	   	<p>Jeste li sigurni da zelite da dodate/izmenite Takmicar?</p>
 	</div>
 	<div class="modal-footer">
-	   	<button class="btn btn-primary" type="button" ng-click="confirm()">Confirm</button>
-	   	<button class="btn btn-warning" type="button" ng-click="revert()">Revert</button>
+	   	<button class="btn btn-primary" type="button" ng-click="confirm()">Potvrdi</button>
+	   	<button class="btn btn-warning" type="button" ng-click="revert()">Otkazi</button>
 	</div>
 </script>
 

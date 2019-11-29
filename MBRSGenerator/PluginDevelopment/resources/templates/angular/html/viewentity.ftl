@@ -1,4 +1,4 @@
-<h2>View ${class.name}</h2>
+<h2>Prikaz ${class.name}</h2>
 
 <div ng-init="getOne()">
 

@@ -17,13 +17,13 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/static/app/css/main.css" />
 
-<title>DemoApp</title>
+<title>Demo</title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/#/">Home</a> 
+				<a class="navbar-brand" href="/#/">Pocetna</a> 
 	<#list classes as class>
 		<#if class.uiClass??>
 				<a class="navbar-brand" href="/#/${class.name?uncap_first}List">${class.uiClass.label}</a>
@@ -35,7 +35,7 @@
 
 	<div class="jumbotron">
 		<div class="container text-center">
-			<h1>Demo App</h1>
+			<h1>Demo</h1>
 			<p>Web aplikacija za evidenciju trkackih takmicenja</p>
 		</div>
 	</div>

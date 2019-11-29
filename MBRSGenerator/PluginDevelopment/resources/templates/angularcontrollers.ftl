@@ -64,10 +64,10 @@ demoApp.controller('${class.name}Controller', function($scope, $location, $route
 		${class.name?uncap_first}Service.remove(id)
 				.success(function(data) {
 					$scope.getAll();
-					$scope.alerts.push({msg: '${class.name} with ID ' + id + ' successufully deleted', type: 'success'});
+					$scope.alerts.push({msg: '${class.name} sa ID ' + id + ' obrisan/o', type: 'success'});
 				})
 				.error(function() {
-					$scope.alerts.push({msg: 'Error while deleting ${class.name} with ID ' + id + '!', type: 'danger'});
+					$scope.alerts.push({msg: 'Doslo je do greske prilikom brisanja ${class.name} sa ID ' + id + '!', type: 'danger'});
 				});
 	};
 	
@@ -75,10 +75,10 @@ demoApp.controller('${class.name}Controller', function($scope, $location, $route
 	
 	$scope.initAddEditPage = function () {
 		if ($routeParams.id) {
-			$scope.addEditHeading = 'Edit';
+			$scope.addEditHeading = 'Izmeni';
 		}
 		else {
-			$scope.addEditHeading = 'Add';
+			$scope.addEditHeading = 'Dodaj';
 		}
 	}
 	

@@ -1,5 +1,5 @@
 	
-<h2>Takmicenja<span class="badge">{{totalItems}}</span></h2>
+<h2>Takmicenja<span class="badge">  Ukupno: {{totalItems}}</span></h2>
 	
 <div ng-init="page=1; getAll();">
 
@@ -11,7 +11,7 @@
 			<td>Datum</td>
 			<td>Organizator</td>
 			<td>Kontakt</td>
-			<th>Actions</th>
+			<th>Operacije</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,9 +25,9 @@
 			<td>{{ takmicenje.kontakt }}</td>			
 			
 			<td>
-				<a class="btn btn-success btn-sm" href="/#/takmicenjeList/{{ takmicenje.id }}">view</a>
-				<a class="btn btn-warning btn-sm" href="/#/takmicenjeList/edit/{{ takmicenje.id }}">edit</a>
-				<button class="btn btn-danger btn-sm" ng-click="remove(takmicenje.id)">delete</button>
+				<a class="btn btn-success btn-sm" href="/#/takmicenjeList/{{ takmicenje.id }}">prikazi</a>
+				<a class="btn btn-warning btn-sm" href="/#/takmicenjeList/edit/{{ takmicenje.id }}">izmeni</a>
+				<button class="btn btn-danger btn-sm" ng-click="remove(takmicenje.id)">obrisi</button>
 			</td>
 		</tr>
 	</tbody>
@@ -38,14 +38,14 @@
 
 <div class="row text-center">
 	<span ng-hide="hideSpinner" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-	<span ng-show="showError" class="label label-danger">Ooops, something went wrong! :)</span>
+	<span ng-show="showError" class="label label-danger">Doslo je do greske.</span>
 </div>
 
 <div class="row">
 	<uib-pagination total-items="totalItems" items-per-page="{{maxSize}}" ng-model="page" ng-click="getAll()" max-size="maxSize" class="pagination-sm" boundary-links="true"></uib-pagination>
 </div>
 
-<a href="/#/takmicenjeList/add">Add new Takmicenje</a>
+<a href="/#/takmicenjeList/add">Dodaj nov Takmicenje</a>
 
 <div class = "row">	
 	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>	

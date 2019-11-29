@@ -1,5 +1,5 @@
 	
-<h2>Takmicari<span class="badge">{{totalItems}}</span></h2>
+<h2>Takmicari<span class="badge">  Ukupno: {{totalItems}}</span></h2>
 	
 <div ng-init="page=1; getAll();">
 
@@ -7,17 +7,18 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<td>ImeIPrezime</td>
+			<td>Ime</td>
 			<td>Jmbg</td>
 			<td>Pol</td>
 			<td>Kontakt</td>
 			<td>Trka</td>
-			<th>Actions</th>
+			<td>Prezime</td>
+			<th>Operacije</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="takmicar in takmicarList">
-			<td>{{ takmicar.imeIPrezime }}</td>			
+			<td>{{ takmicar.ime }}</td>			
 			
 			<td>{{ takmicar.jmbg }}</td>			
 			
@@ -27,10 +28,12 @@
 			
 			<td>{{ takmicar.trka.naziv }}</td>	
 			
+			<td>{{ takmicar.prezime }}</td>			
+			
 			<td>
-				<a class="btn btn-success btn-sm" href="/#/takmicarList/{{ takmicar.id }}">view</a>
-				<a class="btn btn-warning btn-sm" href="/#/takmicarList/edit/{{ takmicar.id }}">edit</a>
-				<button class="btn btn-danger btn-sm" ng-click="remove(takmicar.id)">delete</button>
+				<a class="btn btn-success btn-sm" href="/#/takmicarList/{{ takmicar.id }}">prikazi</a>
+				<a class="btn btn-warning btn-sm" href="/#/takmicarList/edit/{{ takmicar.id }}">izmeni</a>
+				<button class="btn btn-danger btn-sm" ng-click="remove(takmicar.id)">obrisi</button>
 			</td>
 		</tr>
 	</tbody>
@@ -41,14 +44,14 @@
 
 <div class="row text-center">
 	<span ng-hide="hideSpinner" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-	<span ng-show="showError" class="label label-danger">Ooops, something went wrong! :)</span>
+	<span ng-show="showError" class="label label-danger">Doslo je do greske.</span>
 </div>
 
 <div class="row">
 	<uib-pagination total-items="totalItems" items-per-page="{{maxSize}}" ng-model="page" ng-click="getAll()" max-size="maxSize" class="pagination-sm" boundary-links="true"></uib-pagination>
 </div>
 
-<a href="/#/takmicarList/add">Add new Takmicar</a>
+<a href="/#/takmicarList/add">Dodaj nov Takmicar</a>
 
 <div class = "row">	
 	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>	

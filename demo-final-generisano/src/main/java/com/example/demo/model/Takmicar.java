@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @Entity
 public class Takmicar extends AbstractBaseEntity { 
  
-	@Column(name="imeiprezime"
+	@Column(name="ime"
 	)
-    private String imeIPrezime;
+    private String ime;
         
 	@Column(name="jmbg"
 	)
@@ -35,15 +35,19 @@ public class Takmicar extends AbstractBaseEntity {
 	@ManyToOne(fetch=FetchType.LAZY)
     private Trka trka;
         
+	@Column(name="prezime"
+	)
+    private String prezime;
+        
 
 	public Takmicar() {}
 
-  	public String getImeIPrezime(){
-    	return imeIPrezime;
+  	public String getIme(){
+    	return ime;
   	}
   
-  	public void setImeIPrezime(String imeIPrezime){
-       	this.imeIPrezime = imeIPrezime;	
+  	public void setIme(String ime){
+       	this.ime = ime;	
 	}
       
   	public String getJmbg(){
@@ -76,6 +80,14 @@ public class Takmicar extends AbstractBaseEntity {
   
   	public void setTrka(Trka trka){
        	this.trka = trka;	
+	}
+      
+  	public String getPrezime(){
+    	return prezime;
+  	}
+  
+  	public void setPrezime(String prezime){
+       	this.prezime = prezime;	
 	}
       
 
