@@ -16,27 +16,22 @@ import javax.persistence.Table;
 @Entity
 public class Takmicar extends AbstractBaseEntity { 
  
-	@Column(name="ime"
-	)
+	@Column(name="ime")
     private String ime;
         
-	@Column(name="jmbg"
-	)
+	@Column(name="jmbg")
     private String jmbg;
         
-	@Column(name="pol"
-	)
+	@Column(name="pol")
     private String pol;
         
-	@Column(name="kontakt"
-	)
+	@Column(name="kontakt")
     private String kontakt;
         
 	@ManyToOne(fetch=FetchType.LAZY)
     private Trka trka;
         
-	@Column(name="prezime"
-	)
+	@Column(name="prezime")
     private String prezime;
         
 

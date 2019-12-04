@@ -16,23 +16,19 @@ import javax.persistence.Table;
 @Entity
 public class Takmicenje extends AbstractBaseEntity { 
  
-	@Column(name="naziv"
-	, unique=true)
+	@Column(name="naziv", unique=true)
     private String naziv;
         
     @OneToMany(mappedBy="takmicenje",cascade=CascadeType.REMOVE)
 	private List<Trka> trkeList = new ArrayList<Trka>();
         
-	@Column(name="datum"
-	)
+	@Column(name="datum")
     private String datum;
         
-	@Column(name="organizator"
-	)
+	@Column(name="organizator")
     private String organizator;
         
-	@Column(name="kontakt"
-	)
+	@Column(name="kontakt")
     private String kontakt;
         
 

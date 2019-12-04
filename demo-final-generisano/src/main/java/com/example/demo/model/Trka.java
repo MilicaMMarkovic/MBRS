@@ -16,16 +16,13 @@ import javax.persistence.Table;
 @Entity
 public class Trka extends AbstractBaseEntity { 
  
-	@Column(name="naziv"
-	)
+	@Column(name="naziv")
     private String naziv;
         
-	@Column(name="cena"
-	)
+	@Column(name="cena")
     private int cena;
         
-	@Column(name="duzinakm"
-	)
+	@Column(name="duzinakm")
     private double duzinaKm;
         
 	@ManyToOne(fetch=FetchType.LAZY)
