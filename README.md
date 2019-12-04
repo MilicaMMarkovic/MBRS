@@ -11,6 +11,6 @@ University project for Rapid Application Methodologies Development
 - Pokrenuti MagicDraw, otvoriti model i na toolbar-u ispod Code generation kliknuti Generate.
 
 # Pokretanje generisane aplikacije.
-- U Eclipse ili neki drugi IDE importovati #demo projekat.
-- Promeniti u application.properties konekcioni string.
+- U Eclipse ili neki drugi IDE importovati DEMO projekat.
+- Promeniti u application.properties konekcioni string (naziv baze podataka, kredencijali za pristup).
 - Pokrenuti projekat kao Java application.
