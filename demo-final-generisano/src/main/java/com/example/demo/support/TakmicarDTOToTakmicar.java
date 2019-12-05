@@ -39,11 +39,11 @@ public class TakmicarDTOToTakmicar
 		takmicar.setId(dto.getId());
 		
 	    takmicar.setIme(dto.getIme());
+	    takmicar.setPrezime(dto.getPrezime());
 	    takmicar.setJmbg(dto.getJmbg());
 	    takmicar.setPol(dto.getPol());
 	    takmicar.setKontakt(dto.getKontakt());
 		takmicar.setTrka(toTrka.convert(dto.getTrka()));
-	    takmicar.setPrezime(dto.getPrezime());
 		
 		
 		return takmicar;

@@ -19,6 +19,9 @@ public class Takmicar extends AbstractBaseEntity {
 	@Column(name="ime")
     private String ime;
         
+	@Column(name="prezime")
+    private String prezime;
+        
 	@Column(name="jmbg")
     private String jmbg;
         
@@ -31,9 +34,6 @@ public class Takmicar extends AbstractBaseEntity {
 	@ManyToOne(fetch=FetchType.LAZY)
     private Trka trka;
         
-	@Column(name="prezime")
-    private String prezime;
-        
 
 	public Takmicar() {}
 
@@ -43,6 +43,14 @@ public class Takmicar extends AbstractBaseEntity {
   
   	public void setIme(String ime){
        	this.ime = ime;	
+	}
+      
+  	public String getPrezime(){
+    	return prezime;
+  	}
+  
+  	public void setPrezime(String prezime){
+       	this.prezime = prezime;	
 	}
       
   	public String getJmbg(){
@@ -75,14 +83,6 @@ public class Takmicar extends AbstractBaseEntity {
   
   	public void setTrka(Trka trka){
        	this.trka = trka;	
-	}
-      
-  	public String getPrezime(){
-    	return prezime;
-  	}
-  
-  	public void setPrezime(String prezime){
-       	this.prezime = prezime;	
 	}
       
 

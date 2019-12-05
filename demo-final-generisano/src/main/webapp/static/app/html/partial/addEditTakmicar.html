@@ -8,6 +8,12 @@
 	    </div>
  	</div>
 	<div class="form-group">
+	    <label class="col-sm-2 control-label">Prezime</label>
+	    <div class="col-sm-4">
+	    	<input type="text" class="form-control" placeholder="Prezime..." ng-model="takmicar.prezime" >
+	    </div>
+ 	</div>
+	<div class="form-group">
 	    <label class="col-sm-2 control-label">Jmbg</label>
 	    <div class="col-sm-4">
 	    	<input type="text" class="form-control" placeholder="Jmbg..." ng-model="takmicar.jmbg" >
@@ -33,16 +39,10 @@
 	    	</select>
 	    </div>
  	</div>
-	<div class="form-group">
-	    <label class="col-sm-2 control-label">Prezime</label>
-	    <div class="col-sm-4">
-	    	<input type="text" class="form-control" placeholder="Prezime..." ng-model="takmicar.prezime" >
-	    </div>
- 	</div>
 
 	<div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
-	    	<button ng-disabled="   !takmicar.ime    && !takmicar.jmbg    && !takmicar.pol    && !takmicar.kontakt    && !takmicar.trka    && !takmicar.prezime  "
+	    	<button ng-disabled="   !takmicar.ime    && !takmicar.prezime    && !takmicar.jmbg    && !takmicar.pol    && !takmicar.kontakt    && !takmicar.trka  "
 	    			ng-click="open()" type="submit" class="btn btn-info">Sacuvaj</button>
 	    </div>
   	</div>

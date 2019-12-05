@@ -8,17 +8,19 @@
 	<thead>
 		<tr>
 			<td>Ime</td>
+			<td>Prezime</td>
 			<td>Jmbg</td>
 			<td>Pol</td>
 			<td>Kontakt</td>
 			<td>Trka</td>
-			<td>Prezime</td>
 			<th>Operacije</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="takmicar in takmicarList">
 			<td>{{ takmicar.ime }}</td>			
+			
+			<td>{{ takmicar.prezime }}</td>			
 			
 			<td>{{ takmicar.jmbg }}</td>			
 			
@@ -27,8 +29,6 @@
 			<td>{{ takmicar.kontakt }}</td>			
 			
 			<td>{{ takmicar.trka.naziv }}</td>	
-			
-			<td>{{ takmicar.prezime }}</td>			
 			
 			<td>
 				<a class="btn btn-success btn-sm" href="/#/takmicarList/{{ takmicar.id }}">prikazi</a>
