@@ -16,7 +16,7 @@ public class FMProperty extends FMElement  {
 	
 	private String aggregationKind;
 	
-	// (RestaurantProfile)
+	// (TakmicenjeProfile)
 	
 	private Boolean hidden;
 	
